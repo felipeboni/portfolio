@@ -335,7 +335,10 @@
     
     $.ajax({
         type: "GET",
-        url: `https://api.github.com/users/${user}/events/public`
+        url: `https://api.github.com/users/${user}/events/public`,
+        data: {
+            access_token: process.env.PORTFOLIO_TOKEN
+        }
     }).done((response) => {
         response.some((evt, i) => {
             if (i === 3) return true
@@ -346,13 +349,16 @@
             $.ajax({
                 type: "GET",
                 url: `https://api.github.com/repos/${repo.name}`,
-                // data: {
-                //     access_token: secrets.PORTFOLIO_TOKEN
-                // }
+                data: {
+                    access_token: process.env.PORTFOLIO_TOKEN
+                }
             }).done((repo) => {
                 $.ajax({
                     type: "GET",
-                    url: `https://api.github.com/repos/${repo.full_name}/commits/${commit.sha}`
+                    url: `https://api.github.com/repos/${repo.full_name}/commits/${commit.sha}`,
+                    data: {
+                        access_token: process.env.PORTFOLIO_TOKEN
+                    }
                 }).done((commit) => {
                     $(".github").append(`
                     <div class="col-lg-4 col-md-6 col-sm-12">
