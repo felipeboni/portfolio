@@ -140,13 +140,7 @@
         removalDelay: 300,
         mainClass: 'mfp-fade'
     });
-
-    $(".img-popup").magnificPopup({
-        type: "image",
-         gallery: { 
-          enabled: true 
-        }
-    });
+    
     //===== Nice select js
     $('select').niceSelect();
 
